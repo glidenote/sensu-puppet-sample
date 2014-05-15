@@ -111,10 +111,24 @@ service crond start
 
  * serverとclient間でRabbitMQの通信でSSLを利用する場合は、server側の`/etc/puppet/modules/sensu-misc/files/etc/sensu/ssl`内のファイルをclient側の同じディレクトリに転送し、`sensu-client/01-sensu-client.pp`内の
 
-```
-  # rabbitmq_port            => 5671, # SSL用portは5671
-  # rabbitmq_ssl_private_key => 'puppet:///modules/sensu-misc/etc/sensu/ssl/key.pem',
-  # rabbitmq_ssl_cert_chain  => 'puppet:///modules/sensu-misc/etc/sensu/ssl/cert.pem',
+``` diff
+diff --git a/sensu-client/01-sensu-client.pp b/sensu-client/01-sensu-client.pp
+index e95aa3d..44ff1b0 100644
+--- a/sensu-client/01-sensu-client.pp
++++ b/sensu-client/01-sensu-client.pp
+@@ -13,9 +13,9 @@ class { 'sensu':
+   purge_config             => true,
+   rabbitmq_host            => "$rabbitmq_host",
+   rabbitmq_password        => "$rabbitmq_password",
+-  # rabbitmq_port            => 5671, # SSL用portは5671
+-  # rabbitmq_ssl_private_key => 'puppet:///modules/sensu-misc/etc/sensu/ssl/key.pem',
+-  # rabbitmq_ssl_cert_chain  => 'puppet:///modules/sensu-misc/etc/sensu/ssl/cert.pem',
++  rabbitmq_port            => 5671, # SSL用portは5671
++  rabbitmq_ssl_private_key => 'puppet:///modules/sensu-misc/etc/sensu/ssl/key.pem',
++  rabbitmq_ssl_cert_chain  => 'puppet:///modules/sensu-misc/etc/sensu/ssl/cert.pem',
+   subscriptions            => 'sensu-test',
+   plugins                  => [
+     'puppet:///modules/sensu-misc/etc/sensu/plugins/processes/check-procs.rb',
 ```
 
 のコメントアウトを外すことで利用出来ます。
