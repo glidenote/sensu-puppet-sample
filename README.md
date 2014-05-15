@@ -117,7 +117,7 @@ service crond start
   # rabbitmq_ssl_cert_chain  => 'puppet:///modules/sensu-misc/etc/sensu/ssl/cert.pem',
 ```
 
-のコメントを外すことで利用出来ます。
+のコメントアウトを外すことで利用出来ます。
 
 ### ログを確認する
 
