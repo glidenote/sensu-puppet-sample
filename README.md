@@ -2,6 +2,8 @@
 
 sensu-puppetを利用して、sensuを導入出来ます。導入環境はCentOS 6.xを想定しています。
 
+![](http://blog.glidenote.com/images/2014/05/sensu-puppet-sample0.png)
+
 ## ファイル構成
 
  * `sensu-server`ディレクトリ内に入っているファイルがサーバ側で実行するファイル
