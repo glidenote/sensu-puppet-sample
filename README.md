@@ -91,6 +91,18 @@ vagrant up
 
 http://192.168.33.10:8080 にアクセスするとsensu dashboardにログインできます。
 
+各サーバには
+
+``` sh
+vagrant ssh server001
+```
+
+``` sh
+vagrant ssh client001
+```
+
+などでsshログインが可能です。
+
 ## 動作の確認
 
 両サーバとも`crond`のプロセス監視が入っているので、どちらかで
